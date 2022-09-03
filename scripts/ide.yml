@@ -1,0 +1,19 @@
+version: "3"
+
+tasks:
+  status:
+    desc: Gets IDE status
+    cmds:
+      - phpstorm status .
+  start:
+    desc: Starts PHP Storm Gateway IDE
+    cmds:
+      - tmux new -s "phpstorm@$(pwd)" -d 'while true; do phpstorm run .; done'
+  enter:
+    desc: Access tmux session
+    cmds:
+      - tmux at -t "phpstorm@$(pwd)"
+  stop:
+    desc: Stop WebStorm Gateway IDE
+    cmds:
+      - tmux kill-session -t "phpstorm@$(pwd)"

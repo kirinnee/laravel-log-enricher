@@ -1,0 +1,32 @@
+version: "3"
+
+includes:
+  ide: ./scripts/ide.yml
+  lint: ./scripts/lint.yml
+  fmt: ./scripts/fmt.yml
+
+tasks:
+  cfg:scripts:
+    run: once
+    desc: Configure Scripts to be executable
+    cmds:
+      - chmod -R +x ./scripts
+
+  setup:
+    desc: Install dependencies
+    cmds:
+      - composer install
+
+  # Utility
+  lint:
+    desc: Run all linters
+    cmds:
+      - task: lint:sh
+  fmt:
+    desc: Run all formatters
+    cmds:
+      - task: fmt:php
+      - task: fmt:sh
+      - task: fmt:md
+      - task: fmt:yaml
+      - task: fmt:nix

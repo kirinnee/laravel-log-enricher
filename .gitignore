@@ -1,0 +1,10 @@
+composer.phar
+composer.lock
+/vendor/
+.phpunit.result.cache
+
+.direnv
+
+.php-cs-fixer.cache
+
+.idea
